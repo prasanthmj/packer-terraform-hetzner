@@ -1,0 +1,8 @@
+packer-vars.json
+.DS_Store
+terraform.tfstate
+terraform.tfstate.backup
+.terraform
+kube_config_cluster.yml
+
+
