@@ -1,0 +1,7 @@
+- name: Initial setup
+  hosts: all
+  roles:
+    - role: system
+# TEMP
+#    - role: dev-sec.os-hardening
+    - role: users

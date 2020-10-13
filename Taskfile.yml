@@ -1,0 +1,23 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  
+tasks:
+    install:
+       cmds:
+         - ansible-galaxy install -r ./image-packer/ansible/requirements.yaml
+    image-build:
+      deps: [node-build, bastion-build]
+      
+    node-build:
+       cmds:
+         - cd ./image-packer/nodes  && packer build -var-file=packer-vars.json  packer.json
+    bastion-build:
+          cmds:
+            - cd ./image-packer/bastion  && packer build -var-file=packer-vars.json  packer.json      
+    ansible:
+       cmds:
+         - echo {{.HOSTS}}
+         - cd ./image-packer/ansible && ANSIBLE_FORCE_COLOR=true ansible-playbook site.yaml -i "{{.HOSTS}}," --user='root' --key-file="~/.ssh/hetzner1" --ssh-extra-args='-p 22 -o ConnectTimeout=10 -o ConnectionAttempts=10 -o StrictHostKeyChecking=no' --extra-vars='{"deploy_user_name":"deploy","deploy_user_key_path":"~/.ssh/hetzner1.pub"}'

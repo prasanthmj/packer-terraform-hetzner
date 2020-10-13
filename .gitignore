@@ -4,5 +4,7 @@ terraform.tfstate
 terraform.tfstate.backup
 .terraform
 kube_config_cluster.yml
+cluster.rkestate
+todos.txt
 
 

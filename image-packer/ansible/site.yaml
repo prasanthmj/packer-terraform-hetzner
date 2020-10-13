@@ -1,6 +1,0 @@
-- name: Initial setup
-  hosts: all
-  roles:
-    - system
-    - docker
-    - users

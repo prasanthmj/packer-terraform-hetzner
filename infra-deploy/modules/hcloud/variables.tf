@@ -11,6 +11,22 @@ variable "nodes" {
     }))
 }
 
+variable "bastion" {
+    type = object({
+        name         = string
+        server_type  = string
+        image        = string
+        private_ip   = string
+    })
+}
+
+variable "load_balancer" {
+    type = object({
+        type        = string
+        private_ip  = string
+    })
+}
+
 variable "ssh_key_path" {
     type = string
 }

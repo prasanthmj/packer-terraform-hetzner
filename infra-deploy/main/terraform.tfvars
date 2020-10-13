@@ -3,24 +3,32 @@ cluster_name = "mycluster"
 nodes = {
     1 = {
         name = "node1"
-        server_type = "cx21"
-        image = "ubuntu-20.04"
-        private_ip   = "10.0.0.2"
+        server_type = "cx31"
+        private_ip   = "10.0.0.5"
     }
     
     2 = {
         name = "node2"
-        server_type = "cx21"
-        image = "ubuntu-20.04"
-        private_ip   = "10.0.0.3"
+        server_type = "cx31"
+        private_ip   = "10.0.0.6"
     }
     
     3 = {
         name = "node3"
-        server_type = "cx21"
-        image = "ubuntu-20.04"
-        private_ip   = "10.0.0.4"
+        server_type = "cx31"
+        private_ip   = "10.0.0.7"
     }
+}
+
+bastion ={
+    name = "bastion"
+    server_type = "cx11"
+    private_ip   = "10.0.0.2"    
+}
+
+load_balancer = {
+    type="lb11"
+    private_ip="10.0.0.3"
 }
 
 ssh_key_path = "~/.ssh/hetzner1"
@@ -28,8 +36,8 @@ ssh_key_path = "~/.ssh/hetzner1"
 hcloud_location = "nbg1"
 
 deploy_user = {
-    username = "root"
-    ssh_key_path = "~/.ssh/hetzner1"
+    username = "simfatic"
+    ssh_key_path = "~/.ssh/simfatic-nodes"
 }
 
 

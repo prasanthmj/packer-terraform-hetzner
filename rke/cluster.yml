@@ -1,0 +1,8 @@
+nodes:
+  - address: 168.119.163.41
+    user: deploy
+    role:
+       - controlplane
+       - etcd
+       - worker
+ssh_key_path: ~/.ssh/hetzner1
