@@ -2,7 +2,7 @@
     "variables": {
         "hcloud_token": "{{env `HCLOUD_TOKEN`}}",
         "bastion_user_name":"userb",
-        "bastion_user_key_path":"~/.ssh/id_rsa.pub"
+        "bastion_user_key_path":"~/.ssh/bastion.pub"
     },
     "builders": [
       {

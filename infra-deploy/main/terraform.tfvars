@@ -31,8 +31,6 @@ load_balancer = {
     private_ip="10.0.0.3"
 }
 
-ssh_key_path = "~/.ssh/hetzner1"
-
 hcloud_location = "nbg1"
 
 deploy_user = {

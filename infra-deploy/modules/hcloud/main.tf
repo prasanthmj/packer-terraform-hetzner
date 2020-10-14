@@ -1,7 +1,3 @@
-resource "hcloud_ssh_key" "ssh" {
-  name       = "${var.cluster_name}-key"
-  public_key = file("${var.ssh_key_path}.pub")
-}
 
 resource "hcloud_network" "private_net" {
   name     = var.private_network_name
@@ -22,7 +18,6 @@ resource "hcloud_server" "cloud_nodes" {
   image       = each.value.image
   server_type = each.value.server_type
   location    = var.hcloud_location
-  ssh_keys    = [hcloud_ssh_key.ssh.name]
   
 }
 resource "hcloud_volume" "volumes" {
@@ -31,8 +26,7 @@ resource "hcloud_volume" "volumes" {
   name = "${each.value.name}-vol"
   size = 10
   server_id = hcloud_server.cloud_nodes[each.key].id
-  automount = true
-  format = "ext4"
+  automount = false
 }
 
 resource "hcloud_server_network" "server_network" {
@@ -67,7 +61,6 @@ resource "hcloud_server" "bastion" {
   image       = var.bastion.image
   server_type = var.bastion.server_type
   location    = var.hcloud_location
-  ssh_keys    = [hcloud_ssh_key.ssh.name]
 }
 
 resource "hcloud_server_network" "server_network_bastion" {

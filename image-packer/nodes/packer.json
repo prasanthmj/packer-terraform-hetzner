@@ -2,7 +2,7 @@
     "variables": {
         "hcloud_token": "{{env `HCLOUD_TOKEN`}}",
         "deploy_user_name":"deploy",
-        "deploy_user_key_path":"~/.ssh/id_rsa.pub"
+        "deploy_user_key_path":"~/.ssh/nodes.pub"
     },
     "builders": [{
         "type": "hcloud",

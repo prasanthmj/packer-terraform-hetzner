@@ -25,10 +25,6 @@ variable "load_balancer" {
     })
 }
 
-variable "ssh_key_path" {
-    type = string
-}
-
 variable "hcloud_location" {
   type=string
   default = "nbg1"

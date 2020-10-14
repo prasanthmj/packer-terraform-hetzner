@@ -6,5 +6,7 @@ terraform.tfstate.backup
 kube_config_cluster.yml
 cluster.rkestate
 todos.txt
+notes.md
+k8s/*
 
 

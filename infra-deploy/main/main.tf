@@ -35,7 +35,6 @@ module "hcloud" {
     private_ip = var.bastion.private_ip
   }
   load_balancer = var.load_balancer
-  ssh_key_path = var.ssh_key_path
 }
 
 module "rke_cluster"{
