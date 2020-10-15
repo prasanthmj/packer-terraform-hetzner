@@ -11,12 +11,6 @@ resource "rke_cluster" "rcluster" {
     }
   }
   
-  bastion_host{
-    address = var.bastion_ip
-    user = var.bastion_user.username
-    ssh_key = file(var.bastion_user.ssh_key_path)
-  }
-  
   upgrade_strategy {
       drain = true
   }

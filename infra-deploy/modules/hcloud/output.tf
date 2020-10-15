@@ -15,8 +15,4 @@ output "load_balancer"{
   description = "Loadbalancer IP address"
 }
 
-output "bastion_host_ip"{
-  value = hcloud_server.bastion.ipv4_address
-  description = "Bastion host IP address"
-}
 

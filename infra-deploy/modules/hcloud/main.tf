@@ -56,15 +56,3 @@ resource "hcloud_load_balancer_network" "server_network_lb" {
   ip = var.load_balancer.private_ip
 }
 
-resource "hcloud_server" "bastion" {
-  name        = var.bastion.name
-  image       = var.bastion.image
-  server_type = var.bastion.server_type
-  location    = var.hcloud_location
-}
-
-resource "hcloud_server_network" "server_network_bastion" {
-  network_id = hcloud_network.private_net.id
-  server_id  = hcloud_server.bastion.id
-  ip         = var.bastion.private_ip
-}

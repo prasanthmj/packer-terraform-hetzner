@@ -8,19 +8,20 @@ tasks:
     install:
        cmds:
          - ansible-galaxy install -r ./image-packer/ansible/requirements.yaml
-    image-build:
-      deps: [node-build, bastion-build]
-      
-    node-build:
+    build-image:
        cmds:
          - cd ./image-packer/nodes  && packer build -var-file=packer-vars.json  packer.json
-    bastion-build:
-          cmds:
-            - cd ./image-packer/bastion  && packer build -var-file=packer-vars.json  packer.json      
     tf-deploy:
       cmds:
         - cd ./infra-deploy/main && terraform apply
+    tf-destroy:
+      cmds:
+        - cd ./infra-deploy/main && terraform destroy
+    # for testing the ansible playbooks
+    # standup a server, test the playbooks 
+    # example:
+    # task ansible "HOSTS=1.2.3.4"
     ansible:
        cmds:
          - echo {{.HOSTS}}
-         - cd ./image-packer/ansible && ANSIBLE_FORCE_COLOR=true ansible-playbook nodes.yaml -i "{{.HOSTS}}," --user='deploy' --key-file="~/.ssh/hetzner1" --ssh-extra-args='-p 22 -o ConnectTimeout=10 -o ConnectionAttempts=10 -o StrictHostKeyChecking=no' --extra-vars='{"deploy_user_name":"deploy","deploy_user_key_path":"~/.ssh/hetzner1.pub", "internal_net_cidr":"10.0.0.0/16"}'
+         - cd ./image-packer/ansible && ANSIBLE_FORCE_COLOR=true ansible-playbook nodes.yaml -i "{{.HOSTS}}," --user='root' --key-file="~/.ssh/hetzner1" --ssh-extra-args='-p 22 -o ConnectTimeout=10 -o ConnectionAttempts=10 -o StrictHostKeyChecking=no' --extra-vars='{"deploy_user_name":"deploy","deploy_user_key_path":"~/.ssh/hetzner1.pub"}'

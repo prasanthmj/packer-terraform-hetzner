@@ -12,11 +12,6 @@ data "hcloud_image" "node_image" {
   most_recent = true
 }
 
-data "hcloud_image" "bastion_image" {
-  with_selector = "name=bastion_node_image"
-  most_recent = true
-}
-
 module "hcloud" {
   source = "../modules/hcloud"
 
@@ -30,12 +25,7 @@ module "hcloud" {
     }
   }
   cluster_name = var.cluster_name
-  bastion = {
-    name = var.bastion.name
-    server_type = var.bastion.server_type
-    image = data.hcloud_image.bastion_image.id
-    private_ip = var.bastion.private_ip
-  }
+  
   load_balancer = var.load_balancer
 }
 
@@ -43,8 +33,6 @@ module "rke_cluster"{
   source = "../modules/rke-cluster"
   nodes = module.hcloud.nodes
   ssh_login = var.deploy_user
-  bastion_ip = module.hcloud.bastion_host_ip
-  bastion_user = var.bastion_user
 }
 
 

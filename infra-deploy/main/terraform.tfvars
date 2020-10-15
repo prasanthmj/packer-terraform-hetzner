@@ -20,12 +20,6 @@ nodes = {
     }
 }
 
-bastion ={
-    name = "bastion"
-    server_type = "cx11"
-    private_ip   = "10.0.0.2"    
-}
-
 load_balancer = {
     type="lb11"
     private_ip="10.0.0.3"
@@ -38,10 +32,6 @@ deploy_user = {
     ssh_key_path = "~/.ssh/simfatic-nodes"
 }
 
-bastion_user = {
-    username = "simfatic"
-    ssh_key_path = "~/.ssh/simfatic-bastion"
-}
 
 
 

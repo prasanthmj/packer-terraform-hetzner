@@ -10,14 +10,6 @@ variable "nodes" {
     }))
 }
 
-variable "bastion" {
-    type = object({
-        name         = string
-        server_type  = string
-        private_ip   = string
-    })
-}
-
 variable "load_balancer" {
     type = object({
         type        = string
@@ -37,11 +29,5 @@ variable "deploy_user" {
   })
 }
 
-variable "bastion_user" {
-  type = object({
-    username = string
-    ssh_key_path= string
-  })
-}
 
 

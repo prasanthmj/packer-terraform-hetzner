@@ -11,14 +11,6 @@ variable "nodes" {
     }))
 }
 
-variable "bastion" {
-    type = object({
-        name         = string
-        server_type  = string
-        image        = string
-        private_ip   = string
-    })
-}
 
 variable "load_balancer" {
     type = object({
