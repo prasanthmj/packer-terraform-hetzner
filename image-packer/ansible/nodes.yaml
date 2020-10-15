@@ -1,5 +1,6 @@
 - name: Initial setup
   hosts: all
+  become: true
   roles:
     - role: system
 # TEMP
@@ -13,3 +14,4 @@
         docker_users:
           - "{{ deploy_user_name }}"
     - role: users
+    - role: ufw

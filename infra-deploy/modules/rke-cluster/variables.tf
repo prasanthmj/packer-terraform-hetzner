@@ -13,3 +13,14 @@ variable "ssh_login" {
     ssh_key_path= string
   })
 }
+
+variable "bastion_ip"{
+    type=string
+}
+
+variable "bastion_user" {
+  type = object({
+    username = string
+    ssh_key_path= string
+  })
+}

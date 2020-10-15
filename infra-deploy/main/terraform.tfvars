@@ -38,6 +38,11 @@ deploy_user = {
     ssh_key_path = "~/.ssh/simfatic-nodes"
 }
 
+bastion_user = {
+    username = "simfatic"
+    ssh_key_path = "~/.ssh/simfatic-bastion"
+}
+
 
 
 

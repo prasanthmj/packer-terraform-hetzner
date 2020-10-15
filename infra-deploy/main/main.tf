@@ -9,10 +9,12 @@ provider "rke" {
 
 data "hcloud_image" "node_image" {
   with_selector = "name=cluster_node_image"
+  most_recent = true
 }
 
 data "hcloud_image" "bastion_image" {
-  with_selector = "name=simfatic-bastion"
+  with_selector = "name=bastion_node_image"
+  most_recent = true
 }
 
 module "hcloud" {
@@ -41,6 +43,8 @@ module "rke_cluster"{
   source = "../modules/rke-cluster"
   nodes = module.hcloud.nodes
   ssh_login = var.deploy_user
+  bastion_ip = module.hcloud.bastion_host_ip
+  bastion_user = var.bastion_user
 }
 
 

@@ -1,4 +1,4 @@
-- name: Initial setup
+- name: Bastion Host image setup
   hosts: all
   roles:
     - role: system

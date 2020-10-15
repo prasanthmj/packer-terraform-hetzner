@@ -1,0 +1,17 @@
+---
+- name: make sure ufw is installed
+  apt: 
+    name: ufw
+    state: latest
+    
+- name: disable all incoming on eth0
+  ufw:
+     rule: reject
+     direction: in
+     interface: eth0
+
+- name: allow all from internal network
+  ufw:
+     rule: allow
+     from_ip: "{{internal_net_cidr}}"
+     to_ip: any

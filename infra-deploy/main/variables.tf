@@ -37,4 +37,11 @@ variable "deploy_user" {
   })
 }
 
+variable "bastion_user" {
+  type = object({
+    username = string
+    ssh_key_path= string
+  })
+}
+
 
